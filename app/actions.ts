@@ -2,6 +2,27 @@
 
 import prisma from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
+import { createSession, deleteSession } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+
+export async function login(prevState: any, formData: FormData) {
+    const id = formData.get('id') as string;
+    const password = formData.get('password') as string;
+
+    // Fixed credentials for demo
+    if (id === 'SKK227008' && password === 'hogehoge') {
+        await createSession(id);
+        redirect('/');
+    }
+
+    return { success: false, error: 'Invalid ID or Password' };
+}
+
+export async function logout() {
+    await deleteSession();
+    redirect('/login');
+}
+
 
 export async function getTodos() {
     try {

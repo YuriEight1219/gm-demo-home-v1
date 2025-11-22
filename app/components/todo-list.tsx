@@ -47,7 +47,7 @@ export default function TodoList({ todos }: { todos: Todo[] }) {
                     </div>
                     <button
                         onClick={() => startTransition(async () => { await deleteTodo(todo.id); })}
-                        className="ml-2 p-2 text-gray-400 hover:text-red-500 focus:outline-none transition-colors opacity-0 group-hover:opacity-100"
+                        className="ml-2 p-2 text-gray-400 hover:text-red-500 focus:outline-none transition-colors"
                         aria-label="Delete todo"
                     >
                         <svg
